@@ -1,0 +1,46 @@
+<mvc:View controllerName="quickstart.Todo.Todo.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<IconTabBar
+								id="idIconTabBar"
+								select="onIconTabBarSelect"
+								class="sapUiResponsiveContentPadding">
+							<items>
+								<IconTabFilter
+									iconColor="Positive"
+									showAll="true"
+									count="{/total}"
+									text="All"
+									key="All" />
+								<IconTabSeparator />
+								<IconTabFilter
+									icon="sap-icon://accept"
+									iconColor="Positive"
+									count="{/completed}"
+									text="Completed"
+									key="completed" />
+								<IconTabFilter
+									icon="sap-icon://clinical-tast-tracker"
+									iconColor="Negative"
+									count="{/active}"
+									text="Active"
+									key="active" />
+							</items>
+							<content>
+								<Input submit="onCreateTodo" placeholder="Type in a new task ..."></Input>
+								<List items="{ 
+									path: '/itemsToDisplay', 
+									factory: '.factoryStandardListItem'
+									}" mode="MultiSelect" selectionChange="onSelectionChange">
+								</List>
+							</content>
+						</IconTabBar>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
